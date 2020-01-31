@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>SINGLE PAGE WEB APP TEMPLATE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Get started with HTML, CSS and JavaScript">
+  <meta name="author" content="Rasmus Cederdorff">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
+</head>
+
+<body onhashchange="pageChange()">
+  <!-- tabbar navigation -->
+  <nav class="tabbar">
+    <a href="#home">Home</a>
+     <a href="#add-user">add new user</a>
+  </nav>
+  <!-- pages -->
+  <!-- home page -->
+  <section id="home" class="page">
+    <header class="topbar">
+      <h2>Home</h2>
+    </header>
+    <div id="grid-persons" class="grid-container"></div>
+  </section>
+  <!-- detail view -->
+  <section id="detail-view" class="page"></section>
+  <!-- js files -->
+  
+  <section id="add-user" class="page">
+    <header class="topbar">
+      <h2>new user</h2>
+    </header>
+  <form id="addUser" class="form">
+  <input type="text" name="name" placeholder="NAME">
+  <input type="text" name="age" placeholder="AGE">
+  <input type="text" name="address" placeholder="ADDRESS">
+  <input type="text" name="city" placeholder="CITY">
+  <input type="text" name="country" placeholder="COUNTRY">
+  <input type="text" name="gender" placeholder="GENDER">
+  <input type="email" name="email" placeholder="EMAIL">
+  <input type="text" name="img" placeholder="IMAGE URL">
+  <input type="text" name="phone" placeholder="PHONE NUMPER">
+  <button type="button" name="button" onclick="createUser()">save</button>
+  </form>
+  </section>
+  <script src="js/spa.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
