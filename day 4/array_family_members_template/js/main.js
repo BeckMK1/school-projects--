@@ -46,10 +46,19 @@ Appends json data to the DOM
 */
 function appendPersons(persons) {
   let htmlTemplate = "";
+for ( let person of persons){
+console.log(person)
 
   // TODO: implement loop appending the persons
-
+htmlTemplate +=`<article>
+<img src="${person.img}">
+<h2>${person.name}</h2>
+<p>age: ${person.age}</p>
+<p>hair color: ${person.hairColor}</p>
+<p>relation: ${person.relation}</p>
+</article> `
   document.querySelector("#persons").innerHTML = htmlTemplate;
+}
 }
 
 appendPersons(familyMembers);
@@ -60,7 +69,15 @@ Search functionality: find objects by given searchValue
 function search(searchValue) {
   searchValue = searchValue.toLowerCase();
   console.log(searchValue);
-
+let filteredpersons=[];
+for(let person of familyMembers){
+let name = person.name.toLocaleLowerCase();
+if(name.includes(searchValue)){
+filteredpersons.push(person);
+}
+}
+console.log(filteredpersons);
+appendPersons(filteredpersons);
   // TODO: implement search functionality
 }
 
@@ -71,6 +88,18 @@ function add() {
   console.log("Add button clicked");
 
   let inputName = document.getElementById('inputName');
-
-  // TODO: implement add functionality
+let inputage= document.getElementById('inputAge');
+let inputhaircolor = document.getElementById('inputHairColor');
+let inputrelaton = document.getElementById('inputRelation');
+let inputimgurl = document.getElementById('inputImageUrl');
+console.log(inputName.value, inputage.value, inputhaircolor.value, inputimgurl.value, inputrelaton.value);
+let newperson ={
+name: inputName.value,
+age: inputage.value,
+relation: inputrelaton,
+hairColor: inputhaircolor,
+img: inputimgurl
+}
+familyMembers.push(newperson);
+appendPersons(familyMembers);
 }

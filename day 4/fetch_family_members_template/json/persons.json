@@ -4,4 +4,36 @@
     "hairColor": "blonde",
     "relation": "dad",
     "img": "dad.jpg"
-  }]
+  },
+   {
+    "name": "Ane Madsen",
+    "age": 51,
+    "hairColor": "brown",
+    "relation": "mom",
+    "img": "img/ane.jpg"
+  }, {
+    "name": "Rasmus Madsen",
+    "age": 29,
+    "hairColor": "blonde",
+    "relation": "brother",
+    "img": "img/rasmus.jpg"
+  }, {
+    "name": "Mie Madsen",
+    "age": 25,
+    "hairColor": "brown",
+    "relation": "sister",
+    "img": "img/mie.jpg"
+  }, {
+    "name": "Mads Madsen",
+    "age": 18,
+    "hairColor": "dark",
+    "relation": "brother",
+    "img": "img/mads.jpg"
+  }, {
+    "name": "Jens Madsen",
+    "age": 14,
+    "hairColor": "blonde",
+    "relation": "brother",
+    "img": "img/jenspeter.jpg"
+  }
+]
