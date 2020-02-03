@@ -1,7 +1,7 @@
 "use strict";
 
-//const url = "https://api.cederdorff.com/wp-json/wp/v2/posts";
-const url = "https://api.cederdorff.com/wp-json/wp/v2/posts?_embed";
+const url = "http://wordpress.beckmk.dk/wp-json/wp/v2/posts?categories=1";
+// const url = "https://api.cederdorff.com/wp-json/wp/v2/posts?_embed";
 
 fetch(url)
   .then(function(response) {
@@ -17,7 +17,6 @@ let htmlTemplate ="";
 for (let post of posts){
 htmlTemplate += `
 <article>
-<img src="${getFeaturedImageUrl(post)}">
 <h2>${post.title.rendered}</h2>
 ${post.content.rendered}
 </article>
