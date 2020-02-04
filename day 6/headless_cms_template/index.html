@@ -11,13 +11,34 @@
   <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
 </head>
 
-<body>
+<body onhashchange="pageChange()">
   <header>
-    <h1>HEADLESS CMS PROJECT TEMPLATE</h1>
+    <nav class="tabbar">
+      <a href="#content">movies</a>
+      <a href="#genre">genre</a>
+      <a href="#persons">persons</a>
+    </nav>
   </header>
-  <section id="content" class="grid-container"></section>
+  <section id="content" class="page">
+    <header class="topbar">
+      <h2>Products</h2>
+    </header>
+    <section class="grid-container" id="movies"></section>
+  </section>
+
+  <section id="genre" class="page">
+    <header class="topbar">
+      <h2>Products</h2>
+    </header>
+    <button class="hide" onclick="hideAction()">action</button>
+    <section class="genre-action" id="actionSelect"></section>
+    <button class="hide" onclick="hideDrama()">drama</button>
+      <section class="genre-drama" id="dramaSelect"></section>
+    
+  </section>
   <!-- main js file -->
   <script src="js/main.js"></script>
+  <script src="js/spa.js"></script>
 </body>
 
 </html>
