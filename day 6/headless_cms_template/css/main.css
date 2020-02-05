@@ -127,3 +127,19 @@ display: none;
 .genre-drama{
 display: none;
 }
+input{
+position: relative;
+top:50px
+}
+input, select {
+  -webkit-appearance: none;
+  margin: 1em auto;
+  width: 100%;
+  max-width: 350px;
+  padding: 15px 15px;
+  box-sizing: border-box;
+  display: block;
+  background: #fff;
+  border: 0;
+  border-radius: 0;
+}

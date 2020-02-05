@@ -27,6 +27,7 @@ appendAction(genres)
 });
 };
 genreAction();
+// 
 
 function genreDrama(){
   fetch(drama)
@@ -105,3 +106,15 @@ function getFeaturedImageUrl(post) {
   }
   return imageUrl;
 };
+// function search(value) {
+//   let searchQuery = value.toLowerCase();
+//   let filteredMovies = [];
+//   for(let post of posts){
+//     let title = post.title.rendered.toLowerCase();
+//     if (title.includes(searchQuery)) {
+//       filteredMovies.push(post);
+//     }
+//   }
+//   console.log(filteredMovies);
+//   appendPosts(filteredMovies);
+// };
