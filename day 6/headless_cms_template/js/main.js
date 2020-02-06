@@ -1,103 +1,69 @@
 "use strict";
 // json
 const movies = "http://wordpress.beckmk.dk/wp-json/wp/v2/posts?_embed";
-const action = "http://wordpress.beckmk.dk/wp-json/wp/v2/posts?_embed&categories=21";
-const drama = "http://wordpress.beckmk.dk/wp-json/wp/v2/posts?_embed&categories=24";
+const categories = "http://wordpress.beckmk.dk/wp-json/wp/v2/categories";
+
+let movies = [];
 // fetch json
 function showAll(){
 fetch(movies)
   .then(function(response) {
     return response.json();
   })
-  .then(function(posts) {
-    console.log(posts);
-    appendPosts(posts)
+  .then(function(json) {
+    console.log(json);
+    appendPosts(json);
+    movies = json
   });
 };
 showAll();
 
-// action
-function genreAction(){
-fetch(action)
-.then(function(response){
-return response.json()
-})
-.then(function(genres){
-appendAction(genres)
-});
-};
-genreAction();
-// 
-
-function genreDrama(){
-  fetch(drama)
-  .then(function(response){
-  return response.json()
-  })
-  .then(function(genres){
-  appendDrama(genres)
-  });
-  };
-  genreDrama();
-
-
 // append posts
-function appendPosts(posts) {
+function appendPosts(movies) {
   let htmlTemplate ="";
-  for (let post of posts){
+  for (let movie of movies){
   htmlTemplate += `
   <article>
-  <img src="${getFeaturedImageUrl(post)}">
-  <h2>${post.title.rendered}</h2>
-  ${post.content.rendered}
+  <img src="${movie.acf.img}">
+  <h2>${movie.title.rendered}</h2>
+  <p>${movie.acf.description}</p>
   </article>
   `;
   }
 document.querySelector("#movies").innerHTML = htmlTemplate;
 };
+// search
+function search(value) {
+  let searchQuery = value.toLowerCase();
+  let filteredMovies = [];
+  for(let movie of movies){
+    let title = movie.title.rendered.toLowerCase();
+    if (title.includes(searchQuery)) {
+      filteredMovies.push(movie);
+    }
+  }
+  console.log(filteredMovies);
+  appendPosts(filteredMovies);
+};
 
-// append action
-function appendAction(genres){
+function getGenres(){
+fetch(categories)
+.then(function(response){
+ return response.json();
+})
+.then(function(categories){
+  appendGenres(categories);
+});
+}
+getGenres();
+function appendGenres(genres){
 let htmlTemplate ="";
 for(let genre of genres){
 htmlTemplate +=`
-<article>
-<h2>${genre.title.rendered}</h2>
-${genre.content.rendered}
-</article>
-`
+<option value="${genre.id}">${genre.name}</option>
+`;}
+document.querySelector("#se")
 }
-document.querySelector("#actionSelect").innerHTML = htmlTemplate;
-};
-function appendDrama(genres){
-  let htmlTemplate ="";
-  for(let genre of genres){
-  htmlTemplate +=`
-  <article>
-  <h2>${genre.title.rendered}</h2>
-  ${genre.content.rendered}
-  </article>
-  `
-  }
-  document.querySelector("#dramaSelect").innerHTML = htmlTemplate;
-  };
-function hideAction(){
-let showAndHide = document.querySelector("#actionSelect");
-if (showAndHide.style.display ==="none"){
-showAndHide.style.display = "block";
-} else{
-showAndHide.style.display = "none";
-}
-};
-function hideDrama(){
-  let showAndHide = document.querySelector("#dramaSelect");
-  if (showAndHide.style.display ==="none"){
-  showAndHide.style.display = "block";
-  } else{
-  showAndHide.style.display = "none";
-  }
-  };
-
 // get the featured image url
 function getFeaturedImageUrl(post) {
   let imageUrl = "";
@@ -106,15 +72,3 @@ function getFeaturedImageUrl(post) {
   }
   return imageUrl;
 };
-// function search(value) {
-//   let searchQuery = value.toLowerCase();
-//   let filteredMovies = [];
-//   for(let post of posts){
-//     let title = post.title.rendered.toLowerCase();
-//     if (title.includes(searchQuery)) {
-//       filteredMovies.push(post);
-//     }
-//   }
-//   console.log(filteredMovies);
-//   appendPosts(filteredMovies);
-// };

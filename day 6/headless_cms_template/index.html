@@ -31,11 +31,12 @@
     <header class="topbar">
       <h2>Products</h2>
     </header>
-    <button class="hide" onclick="hideAction()">action</button>
-    <section class="genre-action" id="actionSelect"></section>
-    <button class="hide" onclick="hideDrama()">drama</button>
-      <section class="genre-drama" id="dramaSelect"></section>
-    
+    <select name="genre" id="select-genre" onchange="genreselected(this.value)">
+  <option value="">select Genre</option>
+    </select>
+    <section id="movies-by-genre-container" class="grid-container">
+      <p>Please, select genre</p>
+    </section>
   </section>
   <!-- main js file -->
   <script src="js/main.js"></script>

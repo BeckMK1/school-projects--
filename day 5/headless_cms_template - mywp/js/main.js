@@ -21,7 +21,7 @@ htmlTemplate += `
 ${post.content.rendered}
 </article>
 `;
-}
+}    
 document.querySelector("#content").innerHTML = htmlTemplate;
 }
 
