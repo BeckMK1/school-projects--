@@ -12,26 +12,24 @@
 </head>
 
 <body onhashchange="pageChange()">
-  <header>
     <nav class="tabbar">
-      <a href="#content">movies</a>
+      <a href="#movies">movies</a>
       <a href="#genre">genre</a>
-      <a href="#persons">persons</a>
     </nav>
-  </header>
-  <section id="content" class="page">
+
+  <section id="movies" class="page">
     <header class="topbar">
       <h2>Products</h2>
     </header>
     <input type="search" placeholder="Search" onkeyup="search(this.value)">
-    <section class="grid-container" id="movies"></section>
+    <section id="movies-container" class="grid-container" ></section">
   </section>
 
   <section id="genre" class="page">
     <header class="topbar">
       <h2>Products</h2>
     </header>
-    <select name="genre" id="select-genre" onchange="genreselected(this.value)">
+    <select id="select-genre" name="genre" onchange="genreselected(this.value)">
   <option value="">select Genre</option>
     </select>
     <section id="movies-by-genre-container" class="grid-container">
@@ -39,8 +37,9 @@
     </section>
   </section>
   <!-- main js file -->
-  <script src="js/main.js"></script>
   <script src="js/spa.js"></script>
+  <script src="js/main.js"></script>
+ 
 </body>
 
 </html>
