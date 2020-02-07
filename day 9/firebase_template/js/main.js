@@ -29,5 +29,15 @@ userRef.onSnapshot(function(snapshotData) {
 
 // append users to the DOM
 function appendUsers(users) {
+  let htmlTemplate = "";
+  for(let user of users) {
+  htmlTemplate+=`
+  <article>
+  <h2>${user.name}</h2>
+  <p><a href="mailto:${user.mail}">${user.mail}"</p>
+  </article>
+  `;
+  }
+document.querySelector('#content').innerHTML =htmlTemplate;
   console.log(users);
 }

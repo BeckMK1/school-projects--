@@ -32,13 +32,31 @@ userRef.onSnapshot(function(snapshotData) {
 
 // append users to the DOM
 function appendUsers(users) {
+  let htmlTemplate = "";
+  for(let user of users) {
+  htmlTemplate+=`
+  <article>
+  <h2>${user.name}</h2>
+  <p><a href="mailto:${user.mail}">${user.mail}</a>"</p>
+  </article>
+  `;
+  }
+document.querySelector('#content').innerHTML =htmlTemplate;
   console.log(users);
 }
 
 // ========== CREATE ==========
 // add a new user to firestore (database)
 function createUser() {
-
+let nameInput = document.querySelector("#name");
+let mailInput = document.querySelector("#mail");
+console.log(nameInput.value);
+console.log(mailInput.value);
+let newUser = {
+  name: nameInput.value,
+  mail: mailInput.value
+};
+userRef.add(newUser);
 }
 
 // ========== UPDATE ==========
@@ -53,10 +71,17 @@ function selectUser(id, name, mail) {
 }
 
 function updateUser() {
-
+let nameInput =document.querySelector("#name-update")
+let mailInput = document.querySelector("#mail-update")
+let userToUpdate = {
+name: nameInput.value,
+mail: mailInput.value
+};
+userRef.doc(selectedUserId).set(userToUpdate);
 }
 
 // ========== DELETE ==========
 function deleteUser(id) {
-
+  console.log(id);
+userRef.doc(id).delete();
 }
