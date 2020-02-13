@@ -39,9 +39,27 @@ export default class UserService {
   }
 
   // ========== CREATE ==========
-
+createUser(name, mail) {
+ 
+    let newUser = {
+      name: name,
+      mail: mail
+    };
+  
+    this.userRef.add(newUser);
+  }
   // ========== UPDATE ==========
+  update(name, mail, id) {
+    let userToUpdate = {
+      name: name,
+      mail: mail
+    };
+    userRef.doc(selectedUserId).set(userToUpdate);
+
+  }
 
   // ========== DELETE ==========
-
+  delete(id){
+  this.userRef.doc(id).delete();
+  }   
 }
