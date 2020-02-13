@@ -33,12 +33,34 @@ userRef.onSnapshot(function(snapshotData) {
 // append users to the DOM
 function appendUsers(users) {
   console.log(users);
+  let htmlTemplate = "";
+  for (let user of users) {
+    console.log(user.id);
+    console.log(user.name);
+    htmlTemplate += `
+    <article>
+      <h2>${user.name}</h2>
+      <p><a href="mailto:${user.mail}">${user.mail}</a></p>
+      <button onclick="selectUser('${user.id}','${user.name}', '${user.mail}')">Update</button>
+      <button onclick="deleteUser('${user.id}')">Delete</button>
+    </article>
+    `;
+  }
+  document.querySelector('#content').innerHTML = htmlTemplate;
 }
 
 // ========== CREATE ==========
 // add a new user to firestore (database)
 function createUser() {
-
+  let nameInput = document.querySelector('#name-update');
+  let mailInput = document.querySelector('#mail-update');
+  console.log(nameInput.value);
+  console.log(mailInput.value);
+  let userToUpdate = {
+    name: nameInput.value,
+    mail: mailInput.value,
+  };
+  userRef.doc(selectedUserId).set(userToUpdate);
 }
 
 // ========== UPDATE ==========
@@ -53,10 +75,19 @@ function selectUser(id, name, mail) {
 }
 
 function updateUser() {
+  let nameInput = document.querySelector('#name-update');
+  let mailInput = document.querySelector('#mail-update');
 
+  let userToUpdate = {
+    name: nameInput.value,
+    mail: mailInput.value
+  };
+  userRef.doc(selectedUserId).set(userToUpdate);
 }
+
 
 // ========== DELETE ==========
 function deleteUser(id) {
-
+  console.log(id);
+  userRef.doc(id).delete();
 }
