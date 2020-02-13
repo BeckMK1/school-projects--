@@ -225,3 +225,8 @@ input, select {
   border: 0;
   border-radius: 0;
 }
+#done{
+position: relative;
+bottom: 60px;
+color:gray
+}

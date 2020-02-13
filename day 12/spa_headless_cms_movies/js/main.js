@@ -36,7 +36,7 @@ getMovies();
 // append movies to the DOM
 function appendMovies(movies) {
   let htmlTemplate = "";
-
+  let doneTemplate= ""; 
   for (let movie of movies) {
     htmlTemplate += `
       <article>
@@ -47,17 +47,23 @@ function appendMovies(movies) {
       </article>
     `;
   }
-
+doneTemplate=` <article>
+<p>all movies loaded</p>
+</article>`
   document.querySelector('#movies-container').innerHTML = htmlTemplate;
+  document.querySelector('#done').innerHTML = doneTemplate;
+
 }
 
 // search functionality
+// need to adde genre to WP to work.
 function search(value) {
   let searchQuery = value.toLowerCase();
   let filteredMovies = [];
   for (let movie of movies) {
     let title = movie.title.rendered.toLowerCase();
-    if (title.includes(searchQuery)) {
+    let genre = movie.id.toLowerCase();
+    if (title.includes(searchQuery)||genre.includes(searchQuery)) {
       filteredMovies.push(movie);
     }
   }
