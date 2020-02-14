@@ -78,18 +78,16 @@ function appendUserData(user) {
 function update(){
   var user = firebase.auth().currentUser;
   let updateName = document.querySelector("#name");
-  let updatemail = document.querySelector("#mail")
   user.updateProfile({
-    displayName: updateName.value,
+    displayName: updateName.value
   }).then(function() {
     // Update successful.
   }).catch(function(error) {
     // An error happened.
   });
 user.updateEmail(
-  {
-    email: updatemail.value
-  }).then(function() {
+    "mikkel_beck@live.dk"
+  ).then(function() {
   // Update successful.
 }).catch(function(error) {
   // An error happened.
