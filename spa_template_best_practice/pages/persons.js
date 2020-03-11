@@ -5,8 +5,10 @@ export default class PersonsPage {
     this.initData();
   }
 
-  initData() {
-
+   async initData() {
+   let persons = await _personService.loadPersons();
+   console.log(persons)
+   this.appendPersons(persons)
   }
 
   template() {

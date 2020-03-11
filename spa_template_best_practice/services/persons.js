@@ -1,9 +1,11 @@
 class PersonService {
   constructor() {}
 
-  loadPersons() {
-    // let response = await fetch("https://randomuser.me/api/?results=9");
-    // let jsonData = await response.json();
+   async loadPersons() {
+    let response = await fetch("https://randomuser.me/api/?results=9");
+    let jsonData = await response.json();
+    return jsonData.results;
+
   }
 }
 

@@ -12,4 +12,4 @@ let personsPage = new PersonsPage();
 // init services
 _spaService.init();
 
-window.pageChange = () => spaService.pageChange();
+window.pageChange = () => _spaService.pageChange();
