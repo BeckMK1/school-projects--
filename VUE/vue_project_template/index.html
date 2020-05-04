@@ -14,11 +14,20 @@
 <body>
   <!-- Vue App Start -->
   <div id="app">
-    <h1>{{ message }} </h1>
-    <button v-on:click="changeMessage">Hit me</button>
-
-    <h2>{{text}}</h2>
-    <input v-model="text">
+    <h1>Teachers</h1>
+  <section class="grid-container">
+    <article v-for="teacher in teachers">
+      <img v-bind:src="teacher.img">
+      <h3>{{teacher.name}}</h3>
+      {{teacher.postion}} <br>
+      <a v-bind:href="'mailto'+teacher.mail">{{teacher.mail}}</a>
+    </article>
+  </section>
+  <input v-model="newTeacher.name" placeholder="name">
+  <input v-model="newTeacher.mail" placeholder="mail">
+  <input v-model="newTeacher.postion" placeholder="postion">
+  <input v-model="newTeacher.img" placeholder="image Url">
+  <button type="button" v-on:click="addNewTeacher">add</button>
   </div>
   <!-- Vue App End -->
   <!-- Vue.js, development version, includes helpful console warnings -->
